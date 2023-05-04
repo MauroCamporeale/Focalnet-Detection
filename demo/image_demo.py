@@ -20,6 +20,8 @@ def main():
     result = inference_detector(model, args.img)
     # show the results
     show_result_pyplot(model, args.img, result, score_thr=args.score_thr)
+    #prints results
+    print(result)
 
 
 if __name__ == '__main__':
