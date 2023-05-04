@@ -20,7 +20,7 @@ RUN pip install mmcv-full==1.3.18 -f https://download.openmmlab.com/mmcv/dist/cu
 # Install MMDetection (with swin-transformer and focalnet)
 RUN conda clean --all
 RUN git clone -b focal-net --single-branch https://github.com/MauroCamporeale/Focalnet-Detection.git /focalnet
-WORKDIR /mmdetection
+WORKDIR /focalnet
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
