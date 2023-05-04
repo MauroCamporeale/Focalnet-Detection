@@ -16,8 +16,7 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && rm -rf /var/lib/apt/lists/*
 
 # Install MMCV
-RUN pip install mmcv-full==1.3.18+torch1.10.0+cu113 -f https://openmmlab.oss-accelerate.aliyuncs.com/mmcv/dist/index.html
-
+RUN pip install mmcv-full==1.3.18 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
 # Install MMDetection (with swin-transformer and focalnet)
 RUN conda clean --all
 RUN git clone -b focal-net --single-branch https://github.com/MauroCamporeale/Focalnet-Detection.git /focalnet
