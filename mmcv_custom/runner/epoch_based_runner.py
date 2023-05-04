@@ -87,7 +87,10 @@ class EpochBasedRunnerAmp(EpochBasedRunner):
         self._iter = checkpoint['meta']['iter']
         if 'optimizer' in checkpoint and resume_optimizer:
             if isinstance(self.optimizer, Optimizer):
-                self.optimizer.load_state_dict(checkpoint['optimizer'])
+                try:
+                    self.optimizer.load_state_dict(checkpoint['optimizer'])
+                except:
+                    print("cannot load optimizer due to mismatch")
             elif isinstance(self.optimizer, dict):
                 for k in self.optimizer.keys():
                     self.optimizer[k].load_state_dict(
