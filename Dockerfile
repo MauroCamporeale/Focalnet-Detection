@@ -21,6 +21,15 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
 RUN pip install mmcv-full==1.3.18 -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
 # Install MMDetection (with swin-transformer and focalnet)
 RUN conda clean --all
+
+RUN pip install timm==0.3.2
+
+RUN git clone -b 22.03-t5-patch https://github.com/NVIDIA/apex /apex
+WORKDIR /apex
+RUN pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+
+WORKDIR ../
+
 RUN git clone -b focal-net --single-branch https://github.com/MauroCamporeale/Focalnet-Detection.git /focalnet
 WORKDIR /focalnet
 ENV FORCE_CUDA="1"
