@@ -22,7 +22,7 @@ RUN pip install mmcv-full==1.3.18 -f https://download.openmmlab.com/mmcv/dist/cu
 # Install MMDetection (with swin-transformer and focalnet)
 RUN conda clean --all
 
-RUN pip install timm==0.3.2
+RUN pip install timm
 
 RUN git clone -b 22.03-t5-patch https://github.com/NVIDIA/apex /apex
 WORKDIR /apex
